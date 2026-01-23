@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khaled Abu Almajd | .NET Developer</title>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        :root {
+            --primary: #2563EB;
+            --secondary: #1E40AF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .section-title {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* تنسيق الصورة الشخصية */
+        .profile-image-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-image {
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02) rotate(2deg);
+            transition: transform 0.5s ease;
+        }
+
+        /* تأثير الكتابة */
+        #typing-text {
+            border-right: 3px solid var(--primary);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        /* تنسيق الكروت */
+        .skill-card {
+            background: white;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
+            border-bottom-color: var(--primary);
+        }
+
+        /* --- التعديل الجديد: أنيميشن لقائمة المهارات --- */
+        .skill-card ul li {
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .skill-card ul li:hover {
+            transform: translateY(-5px);
+            background-color: #eff6ff;
+            color: var(--primary);
+            cursor: default;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+<nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="#" class="text-2xl font-bold text-gray-800 tracking-tighter">
+                KHALED<span class="text-blue-600">.DEV</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#about" class="nav-link hover:text-blue-600 transition">About</a>
+                <a href="#skills" class="nav-link hover:text-blue-600 transition">Skills</a>
+                <a href="#projects" class="nav-link hover:text-blue-600 transition">Projects</a>
+                <a href="#contact" class="nav-link hover:text-blue-600 transition">Contact</a>
+            </div>
+
+            <button id="mobile-btn" class="md:hidden text-2xl text-blue-600 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#about" class="mobile-link block text-gray-600 hover:text-blue-600 font-medium transition">About</a>
+                <a href="#skills" class="mobile-link block text-gray-600 hover:text-blue-600 font-medium transition">Skills</a>
+                <a href="#projects" class="mobile-link block text-gray-600 hover:text-blue-600 font-medium transition">Projects</a>
+                <a href="#contact" class="mobile-link block text-gray-600 hover:text-blue-600 font-medium transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+<section id="about" class="min-h-screen flex items-center pt-24 pb-12 overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-blue-50/50 skew-x-12 transform origin-top translate-x-20 -z-10"></div>
+
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div data-aos="fade-right" class="order-2 lg:order-1 text-center lg:text-left">
+                    <div class="inline-block px-3 py-1 mb-4 text-sm font-semibold text-blue-600 bg-blue-100 rounded-full">
+                        🚀 Welcome to my portfolio
+                    </div>
+                   <h1 class="text-5xl lg:text-7xl font-bold mb-6 text-slate-900 leading-tight">
+                        Hi, I'm <br>
+                        <span class="section-title pb-3">Khaled Abu Al-majd</span>
+                    </h1>
+                    
+                    <div class="text-xl lg:text-2xl text-slate-600 mb-8 h-16">
+                        I am a <span id="typing-text" class="font-semibold text-blue-600"></span>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-8 text-2xl font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        .NET Developer | CS Student
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start animate-float-delay">
+                        <a href="https://drive.google.com/drive/folders/1mAg7hqi-smlrDiNlaBkQcWCH7e1YSGib?usp=drive_link" target="_blank" class="bg-slate-800 text-white px-8 py-3 rounded-lg hover:bg-slate-900 transition shadow-lg font-semibold">
+                            <i class="fas fa-file-alt mr-2"></i>View CV
+                        </a>
+
+                        <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition shadow-lg hover:shadow-blue-500/30 font-semibold">
+                            Contact Me
+                        </a>
+                        
+                        <a href="https://github.com/KhaledAbuAl-Majd" target="_blank" class="border-2 border-slate-300 px-8 py-3 rounded-lg hover:border-slate-800 hover:bg-slate-800 hover:text-white transition font-semibold">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left" class="order-1 lg:order-2 flex justify-center relative animate-float">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96">
+                        <div class="absolute inset-0 bg-blue-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                        
+                        <img src="Profile.jpeg" 
+                            alt="Khaled Abu Almajd" 
+                            class="profile-image w-full h-full rounded-full relative z-10 border-4 border-white shadow-2xl"
+                            style="object-fit: cover; object-position: top center; transform: scale(0.90); background-color: #f0f0f0;">
+                            
+                        <div class="absolute bottom-4 right-4 z-20 bg-white p-3 rounded-full shadow-lg text-blue-600 animate-bounce">
+                            <i class="fas fa-code text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+   <section id="skills" class="py-20 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-3 text-slate-900">Technical Skills</h2>
+                <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 transition duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border-blue-500">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Languages & Frameworks</h3>
+                    <ul class="space-y-2 text-slate-600 font-medium text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> C# & .NET</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> C++</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> ADO.NET & LINQ</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> ASP.NET Core Web API</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 transition duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border-indigo-500">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-4">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">App Development & DB</h3>
+                    <ul class="space-y-2 text-slate-600 font-medium text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> SQL Server & T-SQL</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> RESTful API Design</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Windows Services</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-indigo-500 mr-2"></i> Windows Forms (Desktop)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 transition duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border-purple-500">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-4">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-800">Concepts & Tools</h3>
+                    <ul class="space-y-2 text-slate-600 font-medium text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-500 mr-2"></i> OOP & N-Tier Architecture</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-500 mr-2"></i> Data Structures & Algorithms</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-500 mr-2"></i> Git, GitHub</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-purple-500 mr-2"></i> Visual Studio & SSMS</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Full Projects</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <a href="https://github.com/KhaledAbuAl-Majd/Money-Mind-Manager.git" target="_blank" class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center text-white relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300"></div>
+                        <i class="fas fa-wallet text-5xl transform group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold group-hover:text-blue-600 transition">Money Mind Manager</h3>
+                            <i class="fas fa-external-link-alt text-gray-400 group-hover:text-blue-600"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Money Mind Manager is an advanced, database-centric Personal Financial Management (PFM) desktop application built with C# Windows Forms and a robust SQL Server backend, supporting multi-user financial tracking.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">C#</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">T-SQL</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">ADO.NET</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Windows Forms</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full font-bold">Active Project</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://github.com/KhaledAbuAl-Majd/Driving-Vehicle-License-Department-DVLD---Full-Real-Project.git" target="_blank" class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+                    <div class="h-48 bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center text-white">
+                        <i class="fas fa-id-card text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-bold group-hover:text-blue-600 transition">DVLD System</h3>
+                            <i class="fas fa-external-link-alt text-gray-400 group-hover:text-blue-600"></i>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Driving & Vehicle License Department (DVLD) management system designed to automate the issuance, renewal, replacement, and suspension handling of driver licenses and related services. Built as a Windows Forms application.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">C#</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">SQL Server</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">ADO.NET</span>
+                            <span class="px-3 py-1 bg-gray-100 text-xs rounded-full">Windows Forms</span>
+                        </div>
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-8">Contact Me</h2>
+            
+            <div class="flex justify-center gap-8 mb-8 text-3xl">
+                <a href="https://www.linkedin.com/in/khaledabualmajd1" target="_blank" class="hover:text-blue-400 transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/KhaledAbuAl-Majd" target="_blank" class="hover:text-gray-400 transition transform hover:scale-110"><i class="fab fa-github"></i></a>
+                <a href="mailto:khaledabualmajd06@gmail.com" class="hover:text-red-400 transition transform hover:scale-110"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/2001044591606" target="_blank" class="hover:text-green-400 transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/KhaledAbuAlMajd1" target="_blank" class="hover:text-sky-500 transition transform hover:scale-110"><i class="fab fa-telegram"></i></a>
+            </div>
+
+            <p class="text-slate-500 text-sm">© 2026 Khaled Abu Al-majd. .NET Developer</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        const textElement = document.getElementById('typing-text');
+        const phrases = [
+            ".NET Developer",
+            "Backend Developer",
+            "CS Student"
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; 
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // فتح وإغلاق القائمة عند الضغط على الزر
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // إغلاق القائمة عند الضغط على أي رابط
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
