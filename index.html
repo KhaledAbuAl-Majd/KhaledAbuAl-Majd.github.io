@@ -56,10 +56,8 @@
       // تطبيق الوضع المحفوظ فورًا (قبل رسم الصفحة) لمنع "الوميض" بين الوضعين
       (function () {
         const saved = localStorage.getItem("theme");
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (saved === "dark" || (!saved && prefersDark)) {
+        // لو المستخدم مفرَضش وضع معين بنفسه (saved === null)، أو لو اختار dark بنفسه، هيشتغل الدارك مود
+        if (saved === "dark" || saved === null) {
           document.documentElement.classList.add("dark");
         }
       })();
@@ -177,15 +175,17 @@
       }
 
       .hover-card ul li:hover {
-        transform: translateY(-5px);
-        background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+        transform: translateY(-3px);
+        background-color: color-mix(in srgb, var(--accent) 15%, transparent);
         color: var(--accent);
         cursor: default;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       }
 
+      /* حل مشكلة النص فقط في الـ Dark Mode دون المساس بألوان الأيقونات */
       .dark .hover-card ul li:hover {
-        background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+        background-color: color-mix(in srgb, var(--accent) 35%, transparent);
+        color: #ffffff !important; /* النص بس هيبقى أبيض */
       }
 
       .nav-link {
@@ -380,25 +380,25 @@
                 href="https://drive.google.com/drive/folders/1mAg7hqi-smlrDiNlaBkQcWCH7e1YSGib?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-slate-800 dark:bg-slate-700 text-white px-8 py-3 rounded-lg hover:bg-slate-900 dark:hover:bg-slate-600 hover:-translate-y-1 transition-all duration-300 ease-in-out shadow-lg font-semibold"
+                class="w-36 py-3 bg-slate-800 dark:bg-slate-700 text-white rounded-lg hover:bg-slate-900 dark:hover:bg-slate-600 hover:-translate-y-1 transition-all duration-300 ease-in-out shadow-lg font-semibold inline-flex items-center justify-center gap-2"
               >
-                <i class="fas fa-file-alt mr-2"></i>View CV
+                <i class="fas fa-file-alt"></i>View CV
               </a>
 
               <a
                 href="#contact"
-                class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300 ease-in-out shadow-lg hover:shadow-blue-500/30 font-semibold"
+                class="w-36 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300 ease-in-out shadow-lg hover:shadow-blue-500/30 font-semibold inline-flex items-center justify-center gap-2"
               >
-                <i class="fas fa-paper-plane mr-2"></i>Contact Me
+                <i class="fas fa-paper-plane"></i>Contact Me
               </a>
 
               <a
                 href="https://github.com/KhaledAbuAl-Majd"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="border-2 border-slate-300 dark:border-slate-600 dark:text-slate-200 px-8 py-3 rounded-lg hover:border-slate-800 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 hover:-translate-y-1 transition-all duration-300 ease-in-out font-semibold"
+                class="w-36 py-3 border-2 border-slate-300 dark:border-slate-600 dark:text-slate-200 rounded-lg hover:border-slate-800 hover:bg-slate-800 hover:text-white dark:hover:bg-slate-700 hover:-translate-y-1 transition-all duration-300 ease-in-out font-semibold inline-flex items-center justify-center gap-2"
               >
-                <i class="fab fa-github mr-2"></i>GitHub
+                <i class="fab fa-github"></i>GitHub
               </a>
             </div>
           </div>
